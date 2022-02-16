@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.page-conatainer {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+
+    .page-content {
+        width: 90%;
+    }
+    // sm
+    @media (min-width: 576px) and (max-width: 767px) {
+        .page-content {
+          width: 80%;
+        }
+    }
+    // md
+    @media (min-width: 768px) and  (max-width: 1399px) {
+        .page-content {
+          width: 60%;
+        }
+    }
+    // lg
+    @media (min-width: 1400px) {
+        .page-content {
+          width: 40%;
+        }
+    }
+}
+
+.hidden {
+  display: none !important;
+}

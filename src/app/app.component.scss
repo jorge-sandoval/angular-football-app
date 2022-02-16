@@ -1,0 +1,44 @@
+::ng-deep {
+    table {
+        width: 100%;
+    }
+
+    table.selectable {
+        .mat-row:hover {
+            background-color: #E8EAF6;
+            cursor: pointer;
+        }
+    }
+
+    .align-center {
+        display: flex;
+        justify-content: center;
+    }
+
+    .align-right {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .header-image {
+        background-size: cover;
+    }
+
+    .header-shield {
+        width: 45px;
+    }
+
+    .snackbar-success {
+        background: rgba(limegreen, 0.9) !important;
+        color: white;
+    }
+
+    .snackbar-error {
+        background: rgba(firebrick, 0.9) !important;
+        color: white;
+    }
+
+    mat-form-field.login-field {
+        width: 100%;
+    }
+}

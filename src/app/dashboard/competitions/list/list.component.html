@@ -1,0 +1,59 @@
+<app-year-picker (yearSelected)="onYearSelected($event)" label="Season Year"></app-year-picker>
+
+<mat-card [class.hidden]="loading">
+    <mat-card-header>
+        <mat-card-title>Competitions</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <table mat-table [dataSource]="dataSource"
+            matSort matSortActive="plan" matSortDirection="asc"
+            class="selectable mat-elevation-z8">
+
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Competition</th>
+                <td mat-cell *matCellDef="let competition">
+                    {{ competition.name | titlecase }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="area">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Area</th>
+                <td mat-cell *matCellDef="let competition">
+                    {{ competition.area?.name | titlecase }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="seasons">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Available Seasons</th>
+                <td mat-cell *matCellDef="let competition">
+                    <span > {{ competition.numberOfAvailableSeasons }} </span>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="plan">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Plan</th>
+                <td mat-cell *matCellDef="let competition">
+                    {{ competition.plan }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="tier">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Subscription</th>
+                <td mat-cell *matCellDef="let competition">
+                    <span *ngIf="competition.planTier === 1" >
+                        <mat-icon>card_giftcard</mat-icon> Free
+                    </span>
+                    <span *ngIf="competition.planTier !== 1" >
+                        <mat-icon>credit_card</mat-icon> Paid
+                    </span>
+                </td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/dashboard/competitions/detail', row.id]"></tr>
+        </table>
+    </mat-card-content>
+    <mat-card-actions>
+        <mat-paginator [pageSizeOptions]="[10,20]" showFirstLastButtons></mat-paginator>
+    </mat-card-actions>
+</mat-card>
